@@ -2,42 +2,21 @@ import React from "react"
 import "./EmployeeCard.css"
 
 
-export const EmployeeCard = () => (
-    <>
-    <section className="employee">
-        <h3 className="employee__name">Maya Smith</h3>
-        <div className="employee__workplace">Nashville Kennels North</div>
-        </section>
-    <section className="employee">
-            <h3 className="employee__name">Duncan Wilson</h3>
-            <div className="employee__workplace">Nashville Kennels North</div>
-        </section>
-    <section className="employee">
-            <h3 className="employee__name">Jordan Woods</h3>
-            <div className="employee__workplace">Nashville Kennels South</div>
-        </section
-    ><section className="employee">
-            <h3 className="employee__name">Ricki Martin</h3>
-            <div className="employee__workplace">Nashville Kennels South</div>
-        </section>
-        </>
-)
+export const EmployeeCard = ({ employee, handleDeleteEmployee }) => {
+    return (
+      <div className="card">
+        <div className="card-content">
+          <picture>
+            <img src={''} alt="employees" />
+          </picture>
+          <h3>Name: <span className="card-petname">
+            {employee.name}
+          </span></h3>
+          <p>Workplace: {employee.workplace}</p>
+          <button type="button" onClick={() => handleDeleteEmployee(employee.id)}>Terminated</button>
+        </div>
+      </div>
+    );
+}
 
 
-
-/* <section className="employee">
-<h3 className="employee__name">Maya Smith</h3>
-<div className="employee__workplace">Nashville Kennels North</div>
-</section>
-<section className="employee">
-<h3 className="employee__name">Duncan Wilson</h3>
-<div className="employee__workplace">Nashville Kennels North</div>
-</section>
-<section className="employee">
-<h3 className="employee__name">Jordan Woods</h3>
-<div className="employee__workplace">Nashville Kennels South</div>
-</section>
-<section className="employee">
-<h3 className="employee__name">Ricki Martin</h3>
-<div className="employee__workplace">Nashville Kennels South</div>
-</section> */
