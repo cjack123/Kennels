@@ -32,20 +32,20 @@ export const EmployeeList = () => {
   // Finally we use .map() to "loop over" the employees array to show a list of employee cards
   return (
     <>
-    <section className="section-content">
-      <button type="button"
-          className="btn"
-          onClick={() => {navigate("/employees/create")}}>
-          Submit New Employee
-      </button>
-    </section>
-        <div className="container-cards">
-          {employees.map(employee =>
-            <EmployeeCard
-              key={employee.id}
-              employee={employee}
-              handleDeleteEmployee={handleDeleteEmployee} />)}
-        </div>
-    </>
+      <section className="section-content">
+        <button type="button"
+            className="btn"
+            onClick={() => {navigate("/employees/create")}}>
+            Submit New Employee
+        </button>
+      </section>
+          <div className="container-cards">
+            {employees.map(employee =>
+              <EmployeeCard
+                key={employee.id}
+                employee={employee}
+                handleDeleteEmployee={handleDeleteEmployee} />)}
+          </div>
+      </>
   );
 };

@@ -10,6 +10,9 @@ export const EmployeeForm = () => {
 
 	const [employee, setEmployee] = useState({
 		name: "",
+		address: "",
+		phone: "",
+		email: "",
 		locationId: 0
 	});
 
