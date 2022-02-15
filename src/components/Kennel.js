@@ -11,8 +11,8 @@ export const Kennel = () => {
         setIsAuthenticated(sessionStorage.getItem("kennel_customer") !== null)
     }
 
-    const clearUser = () => {
-        sessionStorage.clear();
+    const clearUser = (user) => {
+        sessionStorage.setItem("kennel_customer", JSON.stringify(user))
         setIsAuthenticated(sessionStorage.getItem("kennel_customer") !== null)
       }
     
