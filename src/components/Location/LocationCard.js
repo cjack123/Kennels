@@ -15,8 +15,9 @@ export const LocationCard = ({ location, handleDeleteLocation }) => {
             </h3>
           <p>Address: {location.address}</p>
           <p>Phone: {location.phone}</p>
-          <button type="button" onClick={() => handleDeleteLocation(location.id)}>Permanent Closure</button>
           <Link to={`/locations/${location.id}`}><button>Details</button></Link>
+          <Link to={`/locations/${location.id}/edit`}><button>Edit</button></Link>
+          <button type="button" onClick={() => handleDeleteLocation(location.id)}>Permanent Closure</button>
         </div>
       </div>
     );

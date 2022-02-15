@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 import "./CustomerCard.css"
 
 export const CustomerCard = ({ customer, handleDeleteCustomer }) => {
@@ -13,6 +14,9 @@ export const CustomerCard = ({ customer, handleDeleteCustomer }) => {
               </span></h3>
             <p>Email: {customer.email}</p>
             <p>Phone: {customer.phone}</p>
+            <Link to={`/customers/${customer.id}/edit`}>
+              <button>Edit</button>
+              </Link>
             <button type="button" onClick={() => handleDeleteCustomer(customer.id)}>Terminate Membership</button>
           </div>
         </div>
