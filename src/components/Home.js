@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { AnimalSpotlight } from "../components/animal/AnimalSpotlight"
 import { getRandomId } from "../modules/AnimalManager"
+import { PropsAndState } from "./PropsAndState"
 
 export const Home = () => {
   const [spotlightId, setSpotlightId] = useState(0);
+  const address = {
+    streetAddress: "123 NSS Way",
+    city: "Nashville",
+    state: "TN",
+    zip: 37536
+  }
 
   const refreshSpotlightAnimal = () => {
     getRandomId().then(setSpotlightId);
@@ -25,6 +32,8 @@ export const Home = () => {
       {
         spotlightId && <AnimalSpotlight animalId={spotlightId} />
       }
+
+      <PropsAndState yourName={"Neicey"} address={address} />
     </>
   );
 };

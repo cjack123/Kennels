@@ -40,9 +40,7 @@ export const AnimalList = () => {
           </section>
       <div className="container-cards">    
         {animals.map(animal =>
-          <AnimalCard
-            key={animal.id}
-            animal={animal}
+         <AnimalCard key={animal.id} animal={animal}
             handleDeleteAnimal={handleDeleteAnimal} 
           />)}
         </div>

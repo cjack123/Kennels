@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addCustomer } from '../../modules/CustomerManager';
 import { getAllLocations } from '../../modules/LocationManager';
+import { getAllAnimals } from '../../modules/AnimalManager';
 import './CustomerForm.css'
 
 export const CustomerForm = () => {
@@ -10,16 +11,18 @@ export const CustomerForm = () => {
 
 	const [customer, setCustomer] = useState({
 		name: "",
-		breed: "",
-		locationId: 0,
-		customerId: 0
+		address: "",
+		phone: "",
+		email: "",
+		animalId: 0,
+		locationId: 0
 	});
 
 	const [isLoading, setIsLoading] = useState(false);
 
-	// you will need the the `getAll` in the LocationsManager and CustomersManager to complete this section
+	// you will need the the `getAll` in the LocationsManager and AnimalManager to complete this section
 	const [locations, setLocations] = useState([]);
-	const [customers, setCustomers] = useState([]);
+	const [animal, setAnimal] = useState([]);
 
 	const navigate = useNavigate();
 
@@ -49,15 +52,21 @@ export const CustomerForm = () => {
         getAllLocations().then(setLocations)
 	}, []);
 
+	useEffect(() => {
+		//load animal data and setState
+        getAllAnimals().then(setAnimal)
+	}, []);
+
 
 
 	const handleClickSaveCustomer = (event) => {
 		event.preventDefault() //Prevents the browser from submitting the form
 
 		const locationId = customer.locationId
+		const animalId = customer.animalId
 
-		if (locationId === 0) {
-			window.alert("Please select a location")
+		if (locationId === 0 && animalId === 0) {
+			window.alert("Please select a location and pet")
 		} else {
 			//invoke addCustomer passing customer as an argument.
 			//once complete, change the url and display the customer list
@@ -99,6 +108,19 @@ export const CustomerForm = () => {
 					<select value={customer.locationId} name="locationId" id="locationId" onChange={handleControlledInputChange} className="form-control" >
 						<option value="0">Select a location</option>
 						{locations.map(l => (
+							<option key={l.id} value={l.id}>
+								{l.name}
+							</option>
+						))}
+					</select>
+				</div>
+			    </fieldset>
+				<fieldset>
+				<div className="form-group">
+					<label htmlFor="animal">Choose pet: </label>
+					<select value={customer.animalId} name="animalId" id="animalId" onChange={handleControlledInputChange} className="form-control" >
+						<option value="0">Select a Pet</option>
+						{animal.map(l => (
 							<option key={l.id} value={l.id}>
 								{l.name}
 							</option>

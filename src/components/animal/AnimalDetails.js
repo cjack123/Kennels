@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {useParams, useNavigate} from "react-router-dom"
 import { getAnimalById, deleteAnimal } from "../../modules/AnimalManager";
+import { PropsAndState } from "../PropsAndState";
 import "./AnimalDetails.css";
 
 
@@ -46,4 +47,10 @@ export const AnimalDetail = () => {
   );
 };
 
-
+//I have questions about the chapter 4 challenge. No rush!
+//Chapter 4 Details Card challenge: Do I create a new const with the following object 
+    //address: { streetAddress: "123 NSS Way", city: "Nashville", state: "TN", zip: 37536}
+    //example: [animal, setAnimal] = useState({ name: "", breed: "" });
+//If I do this, I would need to refactor my database to reflect the properties?
+//Then I would need to update the div for location or create a new one?
+    //Example: <div className="animal__location">Location: {animal.location?.name}</div>

@@ -1,5 +1,7 @@
 import React from "react"
 import { Route, Routes, Navigate } from "react-router-dom"
+import { About } from "./About.js"
+import { Careers } from "./Careers.js"
 import { Home } from "./Home"
 import { Login } from '../components/auth/Login'
 import { Register } from '../components/auth/Register'
@@ -39,49 +41,39 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
             <Routes>
 
                 {/* Renders auth and login */}
-                    <Route exact path="/login" element={<Login setAuthUser={setAuthUser} />} />
-                    <Route exact path="/register" element={<Register />} />
+                <Route exact path="/login" element={<Login setAuthUser={setAuthUser} />} />
+                <Route exact path="/register" element={<Register />} />
 
 
 
-                {/* Render the location list when http://localhost:3000/ */}
-                    <Route exact path="/" element={<Home />} />
+                {/* This will render the home page when http://localhost:3000/ */}
+                <Route path="/" element={<Home />} />
+
+                {/* This will render the About page when http://localhost:3000/about */}
+                <Route path="/about" element={<About />} />
+                {/* This will render the Careers when http://localhost:3000/careers */}
+                <Route path="/careers" element={<Careers />} />
 
                 {/* Render the owner list when http://localhost:3000/owners */}
-                    <Route path="/owners" element={<OwnerList />} />
+                <Route path="/owners" element={<OwnerList />} />
 
 
                 {/* Render the customer list when http://localhost:3000/customers */}
-                <Route excat path="/customers" element={
-                    <PrivateRoute><CustomerList />
-                    </PrivateRoute>} />
-
-                <Route path="/customers/:customerId/edit" element={
-                    <PrivateRoute><CustomerEditForm />
-                    </PrivateRoute>} />
+                <Route exact path="/customers" element={<PrivateRoute><CustomerList /></PrivateRoute>} />
+                <Route path="/customers/:customerId/edit" element={<PrivateRoute><CustomerEditForm /></PrivateRoute>} />
                 <Route path="/customers/create" element={<CustomerForm />} /> {/* Renders a new customer form.*/}
 
 
                 
                 {/* Render the employee list when http://localhost:3000/employees */}
-                <Route path="/employees" element={
-                    <PrivateRoute><EmployeeList /></PrivateRoute>} />
-
-                <Route path="/employees/:employeeId/edit" element={
-                    <PrivateRoute><EmployeeEditForm /></PrivateRoute>} />
-
+                <Route exact path="/employees" element={<PrivateRoute><EmployeeList /></PrivateRoute>} />
+                <Route path="/employees/:employeeId/edit" element={<PrivateRoute><EmployeeEditForm /></PrivateRoute>} />
                 <Route path="/employees/create" element={<EmployeeForm />} /> {/*Renders a form for new employees. */}
 
                 
                 {/* Render the animal list when http://localhost:3000/animals */}                  
-                <Route path="/animals" element={
-                    <PrivateRoute><AnimalList />
-                    </PrivateRoute>} /> 
-
-                <Route path="/animals/:animalId/edit" element={
-                    <PrivateRoute><AnimalEditForm />
-                    </PrivateRoute>} />
-
+                <Route exact path="/animals" element={<PrivateRoute><AnimalList /></PrivateRoute>} /> 
+                <Route path="/animals/:animalId/edit" element={<PrivateRoute><AnimalEditForm /></PrivateRoute>} />
                 <Route exact path="/animals/:animalId" element={<AnimalDetail />} />
                 <Route path="/animals/create" element={<AnimalForm />} /> {/*Renders a form for animals. */}
 
@@ -96,12 +88,10 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
 
 
                 {/* Render the location list when http://localhost:3000/locations */}
-                    <Route path="/locations" element={<LocationList />} />
-                    <Route exact path="/locations/:locationId" element={<LocationDetail />} /> {/* Make sure you add the `exact` attribute here */}
-                    <Route path="/locations/create" element={<LocationForm />} />  {/* Our shiny new route. */}
-                    <Route path="/locations/:locationId/edit" element={
-                        <PrivateRoute><LocationEditForm />
-                    </PrivateRoute>} />
+                <Route exact path="/locations" element={<LocationList />} />
+                <Route exact path="/locations/:locationId" element={<LocationDetail />} /> {/* Make sure you add the `exact` attribute here */}
+                <Route path="/locations/create" element={<LocationForm />} />  {/* Our shiny new route. */}
+                <Route path="/locations/:locationId/edit" element={<PrivateRoute><LocationEditForm /></PrivateRoute>} />
 
                         {/* 
                             This is a new route to handle a URL with the following pattern:

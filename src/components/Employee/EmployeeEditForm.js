@@ -4,7 +4,7 @@ import {getEmployeesById, updateEmployee} from "../../modules/EmployeeManager"
 import "./EmployeeForm.css"
 
 export const EmployeeEditForm = () => {
-  const [employee, setEmployee] = useState({ name: "", address: "", workplace: "" });
+  const [employee, setEmployee] = useState({ name: "", location: "" });
   const [isLoading, setIsLoading] = useState(false);
 
   const {employeeId} = useParams();
@@ -24,7 +24,7 @@ export const EmployeeEditForm = () => {
     const editedEmployee = {
       id: employeeId,
       name: employee.name,
-      workplace: employee.workplace
+      location: employee.location
     };
 
   updateEmployee(editedEmployee)
@@ -60,10 +60,10 @@ export const EmployeeEditForm = () => {
               required
               className="form-control"
               onChange={handleFieldChange}
-              id="workplace"
-              value={employee.workplace}
+              id="location"
+              value={employee.location}
             />
-            <label htmlFor="workplace">Workplace</label>
+            <label htmlFor="location">location</label>
           </div>
           <div className="alignRight">
             <button
